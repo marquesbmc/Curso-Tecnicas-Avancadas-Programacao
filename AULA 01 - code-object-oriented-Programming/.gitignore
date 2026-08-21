@@ -1,0 +1,13 @@
+# JDK portátil: distribuído no ZIP anexado à GitHub Release.
+java/
+
+# Arquivos temporários usados para baixar e extrair o JDK.
+.jdk-extract-temp/
+OpenJDK*.zip
+
+# Saídas geradas pela compilação Java.
+build-portatil/
+*.class
+
+# Pacotes portáteis devem ser publicados em Releases, não no Git comum.
+*-portatil-windows-x64.zip
