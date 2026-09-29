@@ -6,8 +6,6 @@
 
 # Aula 5 – Panorama da Arquitetura de Software
 
----
-
 ## Objetivos da aula
 
 Ao final da aula, o estudante deverá ser capaz de:
