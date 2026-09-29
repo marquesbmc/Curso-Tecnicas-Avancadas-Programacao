@@ -2,15 +2,9 @@
   <img src="./aula-05-botanical-banner.svg" alt="Panorama da Arquitetura de Software — tema Botanical Garden" width="100%">
 </p>
 
-<p align="center">
-  <img src="./assets/aula-01-botanical-banner.svg" alt="Panorama da Arquitetura de Software — tema Botanical Garden" width="100%">
-</p>
 
-# Aula 1 – Panorama da Arquitetura de Software
 
-**Técnicas Avançadas de Programação**  
-**Bloco:** Arquitetura de Software  
-**Duração:** 4 horas
+# Aula 5 – Panorama da Arquitetura de Software
 
 ---
 
