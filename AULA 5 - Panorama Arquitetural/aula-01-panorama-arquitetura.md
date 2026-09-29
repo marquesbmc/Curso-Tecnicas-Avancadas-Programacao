@@ -17,8 +17,6 @@ Ao final da aula, o estudante deverá ser capaz de:
 - identificar benefícios e custos de uma decisão;
 - registrar uma decisão simples em um registro de decisão arquitetural (*Architecture Decision Record – ADR*).
 
----
-
 ## Caso condutor: Obra360
 
 A Obra360 é uma plataforma utilizada por uma construtora para administrar suas obras:
@@ -35,7 +33,6 @@ Durante a aula, usaremos esse caso para responder:
 > [!TIP]
 >> **Pergunta condutora:** que decisões estruturais ajudam a Obra360 a atender suas necessidades, e quais custos acompanham essas decisões?
 
----
 
 ## Resumo da analogia: software e obra de um condomínio
 
@@ -54,7 +51,6 @@ Durante a aula, usaremos esse caso para responder:
 > [!NOTE]
 > A analogia ajuda a visualizar a escala das decisões, mas não torna arquitetura civil e arquitetura de software atividades equivalentes.
 
----
 
 ## O mapa da aula
 
@@ -73,11 +69,9 @@ flowchart TB
 > [!NOTE]
 > Os conceitos não são alternativas concorrentes. Eles respondem a perguntas diferentes e podem coexistir no mesmo sistema.
 
----
 
 # 1.  Arquitetura de software (*software architecture*)
 
----
 
 ## 1.1 Definições de autores
 
@@ -89,7 +83,6 @@ flowchart TB
 
 As definições enfatizam aspectos complementares: **estrutura**, **importância**, **custo de mudança** e **justificativa**.
 
----
 
 ## 1.2 Definição adotada
 
@@ -103,7 +96,6 @@ Uma decisão tende a ser arquitetural quando:
 - envolve dados, integrações ou equipes;
 - possui custo elevado de reversão.
 
----
 
 ## 1.3 Elementos da arquitetura
 
@@ -115,7 +107,6 @@ Uma decisão tende a ser arquitetural quando:
 | Restrições (*constraints*) | Que regras limitam as soluções? | Utilizar a infraestrutura já contratada |
 | Justificativas (*rationale*) | Por que a decisão foi tomada? | Separar autenticação para centralizar o controle de acesso |
 
----
 
 ## 1.4 Comparação com a obra de um condomínio
 
@@ -123,7 +114,6 @@ Na construção de um condomínio, a arquitetura define decisões estruturais im
 
 No software, acontece algo semelhante. Definir que a Obra360 será separada nos módulos Orçamento, Cronograma, Compras e Diário de Obra estabelece as grandes partes e suas relações. Trocar a cor de uma tela tem impacto local; separar um módulo depois que todo o sistema já depende dele pode exigir uma reconstrução extensa — assim como trocar um acabamento é muito mais simples que mover um bloco ou alterar as fundações.
 
----
 
 ## 1.5 Arquitetura, projeto e implementação
 
@@ -143,9 +133,6 @@ flowchart LR
     ES --> PR["Projeto dos módulos"]
     PR --> IM["Implementação no código"]
 ```
-
----
-
 ## 1.6 Questionário
 
 ### Questão 1
@@ -175,8 +162,6 @@ Qual item representa uma relação arquitetural?
 - **c)** O módulo de Compras depender do módulo de Orçamento
 - **d)** A cor de um botão
 
----
-
 ## 1.6 Gabarito
 
 | Questão | Resposta | Justificativa |
@@ -186,10 +171,8 @@ Qual item representa uma relação arquitetural?
 | 3 | **c** | A dependência entre módulos é uma relação estrutural do sistema. |
 
 ---
-
 # 2. Atributos de qualidade (*quality attributes*)
 
----
 
 ## 2.1 Definições de autores
 
@@ -199,7 +182,6 @@ Qual item representa uma relação arquitetural?
 | ISO/IEC 25010:2023 | Qualidade do produto é organizada em características que permitem avaliar o atendimento às necessidades explícitas e implícitas. |
 | Richards e Ford (2025) | Características arquiteturais representam aspectos não funcionais importantes que influenciam a estrutura do sistema. |
 
----
 
 ## 2.2 Definição adotada
 
@@ -212,7 +194,6 @@ Compare:
 - **Atributo de qualidade:** mesmo com conexão móvel instável, 95% das consultas ao cronograma devem exibir os dados disponíveis em até 2 segundos.
 - **Restrição (*constraint*):** o sistema deve utilizar o banco de dados já contratado pela empresa.
 
----
 
 ## 2.3 Principais atributos de qualidade
 
@@ -229,7 +210,6 @@ Compare:
 
 Esses atributos podem entrar em conflito. Favorecer um deles geralmente cria custo em outro.
 
----
 
 ## 2.4 Comparação com a obra de um condomínio
 
@@ -237,7 +217,6 @@ Na construção, dizer que um apartamento terá três quartos descreve o que ser
 
 No software, “registrar o avanço da obra” é uma funcionalidade. “Permitir o registro em até dois segundos, mesmo com conexão móvel instável” é um atributo de qualidade. Assim como segurança, conforto e acessibilidade influenciam materiais e soluções construtivas, desempenho, disponibilidade e modificabilidade influenciam a estrutura do software.
 
----
 
 ## 2.5 Cenário de qualidade (*quality attribute scenario*)
 
@@ -262,7 +241,6 @@ flowchart LR
     R --> M["Medida<br/>p95 ≤ 2 segundos"]
 ```
 
----
 
 ## 2.6 Questionário
 
@@ -293,7 +271,6 @@ Qual atributo está mais diretamente relacionado ao esforço necessário para tr
 - **c)** Modificabilidade
 - **d)** Desempenho
 
----
 
 ## 2.6 Gabarito
 
@@ -307,8 +284,6 @@ Qual atributo está mais diretamente relacionado ao esforço necessário para tr
 
 # 3. Estilos arquiteturais (*architectural styles*)
 
----
-
 ## 3.1 Definições de autores
 
 | Referência | Ideia central |
@@ -317,7 +292,6 @@ Qual atributo está mais diretamente relacionado ao esforço necessário para tr
 | Fielding (2000) | Um estilo é um conjunto coordenado de restrições arquiteturais que produz propriedades desejadas. |
 | Richards e Ford (2025) | Um estilo descreve a estrutura fundamental e as características predominantes de uma arquitetura. |
 
----
 
 ## 3.2 Definição adotada
 
@@ -332,8 +306,6 @@ Um estilo:
 - cria benefícios, limitações e custos;
 - pode ser combinado com outros estilos.
 
----
-
 ## 3.3 Principais estilos arquiteturais
 
 | Estilo | Organização | Favorece | Custo principal | Exemplo geral em engenharia de software |
@@ -344,15 +316,12 @@ Um estilo:
 | Microsserviços (*microservices*) | Serviços implantáveis independentemente | Autonomia e escalabilidade independente | Operação e dados distribuídos | Serviços independentes de Catálogo, Cobrança e Entrega |
 | Arquitetura orientada a eventos (*event-driven architecture*) | Produtores publicam fatos e consumidores reagem | Desacoplamento temporal e extensibilidade | Fluxos difíceis de acompanhar e consistência eventual | Faturamento reage ao evento `VendaConcluída` |
 
----
 
 ## 3.4 Comparação com a obra de um condomínio
 
 Na construção, escolher entre uma casa única, um edifício vertical ou um condomínio de casas determina a organização geral do empreendimento. Cada opção favorece necessidades diferentes: um prédio aproveita melhor um terreno pequeno, enquanto casas independentes oferecem outra forma de acesso, manutenção e privacidade. Essa escolha não define cada porta ou acabamento, mas condiciona grande parte do projeto.
 
 Um estilo arquitetural exerce papel semelhante no software. Um monólito reúne a implantação em uma unidade; microsserviços distribuem partes implantáveis independentemente; uma arquitetura orientada a eventos organiza parte das interações por fatos publicados. Assim como um condomínio pode combinar blocos, áreas comuns e construções auxiliares, um sistema pode combinar mais de um estilo.
-
----
 
 ## 3.5 Os estilos podem coexistir
 
@@ -376,8 +345,6 @@ Nesse exemplo, a Obra360 pode ser:
 
 > [!NOTE]
 > Adotar eventos não obriga a adotar microsserviços.
-
----
 
 ## 3.6 Questionário
 
@@ -408,8 +375,6 @@ Qual afirmação está correta?
 - **c)** Estilos podem ser combinados no mesmo sistema
 - **d)** Microsserviços sempre possuem menor custo operacional
 
----
-
 ## 3.6 Gabarito
 
 | Questão | Resposta | Justificativa |
@@ -422,8 +387,6 @@ Qual afirmação está correta?
 
 # 4. Padrões arquiteturais (*architectural patterns*)
 
----
-
 ## 4.1 Definições de autores
 
 | Referência | Ideia central |
@@ -433,8 +396,6 @@ Qual afirmação está correta?
 | Richards e Ford (2025) | Padrões oferecem soluções conhecidas para problemas arquiteturais específicos, acompanhadas de benefícios e custos. |
 
 Os autores nem sempre usam “estilo” e “padrão” da mesma maneira. Nesta disciplina, adotaremos uma distinção didática explícita.
-
----
 
 ## 4.2 Definição adotada
 
@@ -448,8 +409,6 @@ Para este bloco:
 
 Essa classificação é uma convenção da disciplina, pois a literatura apresenta divergências.
 
----
-
 ## 4.3 Principais padrões arquiteturais
 
 | Padrão | Problema que ajuda a resolver | Comentário breve | Exemplo geral em engenharia de software |
@@ -462,15 +421,11 @@ Essa classificação é uma convenção da disciplina, pois a literatura apresen
 
 Esses padrões serão aprofundados nas aulas seguintes.
 
----
-
 ## 4.4 Comparação com a obra de um condomínio
 
 Projetos de condomínios enfrentam problemas recorrentes e aproveitam soluções já conhecidas. Uma portaria única pode controlar o acesso; a concentração de áreas molhadas pode reduzir a extensão das tubulações; disjuntores permitem proteger e isolar circuitos. Essas soluções não são plantas completas: cada uma responde a um problema específico e possui consequências.
 
 Padrões arquiteturais cumprem função semelhante no software. A Arquitetura Hexagonal ajuda a isolar regras de negócio de tecnologias externas; a Saga ajuda a coordenar uma operação distribuída; a Caixa de Saída Transacional reduz o risco de salvar um dado sem publicar sua mensagem. Como na construção, a solução só faz sentido quando o contexto e o problema realmente existem.
-
----
 
 ## 4.5 Anatomia de um padrão
 
@@ -491,8 +446,6 @@ flowchart LR
 
 > [!WARNING]
 > Citar o nome de um padrão não justifica sua utilização.
-
----
 
 ## 4.6 Questionário
 
@@ -523,8 +476,6 @@ Por que as consequências fazem parte da descrição de um padrão?
 - **c)** Porque padrões são códigos prontos
 - **d)** Porque todo padrão exige microsserviços
 
----
-
 ## 4.6 Gabarito
 
 | Questão | Resposta | Justificativa |
@@ -537,8 +488,6 @@ Por que as consequências fazem parte da descrição de um padrão?
 
 # 5. Integração e comunicação (*integration and communication*)
 
----
-
 ## 5.1 Definições de autores
 
 | Referência | Ideia central |
@@ -546,8 +495,6 @@ Por que as consequências fazem parte da descrição de um padrão?
 | Hohpe e Woolf (2003) | Integração conecta aplicações independentes para que trabalhem em conjunto, frequentemente por mensagens e canais. |
 | Kleppmann (2017) | Em sistemas distribuídos, partes executam em processos ou máquinas diferentes e coordenam suas ações por comunicação em rede. |
 | Nygard (2018) | A comunicação remota precisa considerar latência, indisponibilidade e falhas parciais. |
-
----
 
 ## 5.2 Definição adotada
 
@@ -564,8 +511,6 @@ Quando uma interação passa pela rede, aparecem novos problemas:
 
 > [!CAUTION]
 > Uma chamada remota não possui as mesmas garantias de uma chamada local.
-
----
 
 ## 5.3 Tipos de comunicação
 
@@ -590,15 +535,11 @@ sequenceDiagram
 
 Comunicação assíncrona não elimina todo o acoplamento: ainda existem contratos, significados e expectativas de entrega.
 
----
-
 ## 5.4 Comparação com a obra de um condomínio
 
 Em um condomínio, instalações conectam partes diferentes. A rede elétrica leva energia aos apartamentos; a tubulação distribui água; o interfone permite comunicação entre a portaria e os moradores. Essas ligações precisam de interfaces compatíveis, capacidade adequada e mecanismos de isolamento. Um problema em um circuito não deveria desligar todo o empreendimento.
 
 No software, módulos e serviços também trocam informações por conexões e contratos. Quando Orçamento publica `OrçamentoAprovado`, Compras pode iniciar suas atividades sem conhecer os detalhes internos de Orçamento. Limites de espera, novas tentativas e disjuntores de software ajudam a impedir que a falha de um serviço externo se espalhe pelo sistema — de maneira comparável aos registros hidráulicos e disjuntores que isolam partes de uma instalação.
-
----
 
 ## 5.5 Mensagens e canais
 
@@ -619,8 +560,6 @@ No software, módulos e serviços também trocam informações por conexões e c
 
 Confiabilidade da entrega depende da tecnologia e da configuração utilizada.
 
----
-
 ## 5.6 Lidando com falhas
 
 | Mecanismo | Finalidade | Exemplo geral em engenharia de software |
@@ -631,8 +570,6 @@ Confiabilidade da entrega depende da tecnologia e da configuração utilizada.
 | Idempotência (*idempotency*) | Permitir repetição sem reaplicar o efeito da operação | Evitar a criação duplicada de uma cobrança |
 
 Esses mecanismos não tornam a rede confiável; ajudam o sistema a reagir de maneira controlada às falhas.
-
----
 
 ## 5.7 Questionário
 
@@ -663,8 +600,6 @@ Por que a idempotência é importante quando existem novas tentativas?
 - **c)** Para eliminar contratos
 - **d)** Para substituir o limite de espera
 
----
-
 ## 5.7 Gabarito
 
 | Questão | Resposta | Justificativa |
@@ -677,8 +612,6 @@ Por que a idempotência é importante quando existem novas tentativas?
 
 # 6. Padrões de projeto (*Design Patterns*)
 
----
-
 ## 6.1 Definições de autores
 
 | Referência | Ideia central |
@@ -686,8 +619,6 @@ Por que a idempotência é importante quando existem novas tentativas?
 | Gamma et al. (1994) | Padrões de projeto nomeiam e descrevem soluções recorrentes para problemas de projeto orientado a objetos. |
 | Fowler (2002) | Um padrão descreve um problema que ocorre repetidamente e o núcleo de uma solução reutilizável. |
 | Larman (2007) | Padrões apoiam a atribuição de responsabilidades a objetos e classes. |
-
----
 
 ## 6.2 Definição adotada
 
@@ -702,8 +633,6 @@ Um padrão de projeto:
 - pode ajudar a implementar uma decisão arquitetural;
 - não determina sozinho a arquitetura do sistema.
 
----
-
 ## 6.3 Principais tipos
 
 | Tipo | Objetivo | Padrões representativos | Comentário breve | Exemplo geral em engenharia de software |
@@ -714,15 +643,11 @@ Um padrão de projeto:
 
 Na introdução, o objetivo é reconhecer a escala dos padrões, não memorizar todo o catálogo.
 
----
-
 ## 6.4 Comparação com a obra de um condomínio
 
 Dentro de um apartamento, marceneiros e profissionais de acabamento utilizam técnicas conhecidas para resolver problemas locais: uma dobradiça adequada ao tipo de porta, um encaixe para unir peças ou um módulo repetível de armário. Essas escolhas contribuem para a qualidade do resultado, mas não definem a estrutura do condomínio.
 
 Padrões de projeto também resolvem problemas locais. O Adaptador (*Adapter*) compatibiliza interfaces diferentes; a Estratégia (*Strategy*) permite trocar um comportamento; o Observador (*Observer*) propaga mudanças para interessados. Encontrar um Adaptador no código não revela, sozinho, se o sistema é monolítico, distribuído ou orientado a eventos — assim como observar uma dobradiça não revela a planta do edifício.
-
----
 
 ## 6.5 Escala e relação com a arquitetura
 
@@ -741,8 +666,6 @@ flowchart TB
 
 > [!NOTE]
 > Arquitetura trata da estrutura importante do sistema; padrões de projeto ajudam a organizar soluções locais no código.
-
----
 
 ## 6.6 Questionário
 
@@ -773,8 +696,6 @@ Se um sistema utiliza Adaptador (*Adapter*), podemos concluir que:
 - **c)** Ele obrigatoriamente é orientado a eventos
 - **d)** Não é possível determinar sua arquitetura completa apenas por esse padrão local
 
----
-
 ## 6.6 Gabarito
 
 | Questão | Resposta | Justificativa |
@@ -789,8 +710,6 @@ Se um sistema utiliza Adaptador (*Adapter*), podemos concluir que:
 
 Este tópico é diferente dos anteriores: em vez de apresentar uma nova categoria, ele integra o raciocínio desenvolvido durante a aula.
 
----
-
 ## 7.1 Reconstruindo a definição
 
 No início da aula, adotamos:
@@ -802,8 +721,6 @@ Agora podemos completar o raciocínio:
 
 > [!TIP]
 > **Arquitetar é tomar e comunicar decisões estruturais para atender atributos de qualidade, escolhendo estilos, padrões e formas de integração adequados ao contexto e reconhecendo os custos de cada escolha.**
-
----
 
 ## 7.2 O raciocínio arquitetural
 
@@ -819,8 +736,6 @@ flowchart LR
 ```
 
 A arquitetura não começa pela escolha de uma tecnologia. Começa pela compreensão do problema, das qualidades prioritárias e das restrições.
-
----
 
 ## 7.3 Ordem para construir um software novo
 
@@ -853,8 +768,6 @@ flowchart LR
 
 > [!NOTE]
 > A ordem orienta o raciocínio, mas o processo é iterativo. Novas evidências podem exigir a revisão de requisitos, qualidades e decisões.
-
----
 
 ## 7.4 Fluxo para identificar o que atacar em um problema
 
@@ -910,8 +823,6 @@ flowchart TB
 > [!TIP]
 > **Regra prática:** ataque a causa no menor nível capaz de resolver o problema e só amplie a mudança quando as evidências mostrarem que o problema é estrutural.
 
----
-
 ## 7.5 Registro de decisão arquitetural (*Architecture Decision Record – ADR*)
 
 | Seção | Conteúdo |
@@ -931,9 +842,6 @@ flowchart TB
 > **Contexto:** A troca do fornecedor de cotações altera regras e testes do módulo de Compras.  
 > **Decisão:** O módulo de Compras exporá uma porta própria e cada fornecedor será implementado por um Adaptador.  
 > **Consequências:** Trocas e testes ficam mais simples, mas haverá mais interfaces e classes.
-
-
----
 
 ## 7.6 Percurso das próximas aulas
 
