@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">Panorama da Arquitetura de Software</title>
+  <desc id="desc">Banner em tons de verde, dourado e terracota, combinando uma planta arquitetônica e módulos de software.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2f5a3d"/>
+      <stop offset="0.64" stop-color="#4a7c59"/>
+      <stop offset="1" stop-color="#6b9674"/>
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0V30" fill="none" stroke="#f5f3ed" stroke-opacity="0.09" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#1d3927" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="300" rx="24" fill="url(#bg)"/>
+  <rect width="1200" height="300" rx="24" fill="url(#grid)"/>
+  <path d="M0 270C175 225 304 286 475 250S803 184 1200 238V300H0Z" fill="#26352b" fill-opacity="0.24"/>
+
+  <g transform="translate(62 58)">
+    <circle cx="50" cy="48" r="46" fill="#f9a620" opacity="0.96"/>
+    <path d="M31 65V36l19-16 19 16v29H56V47H44v18Z" fill="#f5f3ed"/>
+    <path d="M17 67h66" stroke="#b7472a" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <g font-family="DejaVu Sans, Arial, sans-serif" fill="#fffdf8">
+    <text x="185" y="92" font-size="24" font-weight="600" letter-spacing="2">TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO</text>
+    <text x="185" y="151" font-family="DejaVu Serif, Georgia, serif" font-size="43" font-weight="700">Panorama da Arquitetura de Software</text>
+    <text x="185" y="195" font-size="23" opacity="0.9">necessidades · qualidades · decisões · estruturas · comunicação</text>
+  </g>
+
+  <g transform="translate(930 50)" filter="url(#shadow)">
+    <rect x="0" y="0" width="185" height="185" rx="18" fill="#f5f3ed"/>
+    <path d="M28 29h129v127H28zM28 91h129M91 29v127M91 61h66M58 91v65" fill="none" stroke="#4a7c59" stroke-width="5"/>
+    <circle cx="28" cy="91" r="7" fill="#f9a620"/>
+    <circle cx="91" cy="61" r="7" fill="#b7472a"/>
+    <circle cx="157" cy="91" r="7" fill="#f9a620"/>
+    <path d="M114 123h29v20h-29z" fill="#dfe9e1" stroke="#4a7c59" stroke-width="3"/>
+  </g>
+
+  <rect x="0" y="286" width="760" height="14" fill="#f9a620"/>
+  <rect x="760" y="286" width="440" height="14" fill="#b7472a"/>
+</svg>
