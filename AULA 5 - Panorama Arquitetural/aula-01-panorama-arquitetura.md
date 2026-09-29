@@ -2,6 +2,10 @@
   <img src="./aula-05-botanical-banner.svg" alt="Panorama da Arquitetura de Software — tema Botanical Garden" width="100%">
 </p>
 
+<p align="center">
+  <img src="./assets/aula-01-botanical-banner.svg" alt="Panorama da Arquitetura de Software — tema Botanical Garden" width="100%">
+</p>
+
 # Aula 1 – Panorama da Arquitetura de Software
 
 **Técnicas Avançadas de Programação**  
@@ -191,7 +195,7 @@ Qual item representa uma relação arquitetural?
 
 ---
 
-# 2. 🎯 Atributos de qualidade (*quality attributes*)
+# 2. Atributos de qualidade (*quality attributes*)
 
 ---
 
@@ -309,7 +313,7 @@ Qual atributo está mais diretamente relacionado ao esforço necessário para tr
 
 ---
 
-# 3. 🧱 Estilos arquiteturais (*architectural styles*)
+# 3. Estilos arquiteturais (*architectural styles*)
 
 ---
 
@@ -424,13 +428,7 @@ Qual afirmação está correta?
 
 ---
 
-# ☕ Intervalo
-
-## 10 minutos
-
----
-
-# 4. 🧰 Padrões arquiteturais (*architectural patterns*)
+# 4. Padrões arquiteturais (*architectural patterns*)
 
 ---
 
@@ -545,7 +543,7 @@ Por que as consequências fazem parte da descrição de um padrão?
 
 ---
 
-# 5. 🔌 Integração e comunicação (*integration and communication*)
+# 5. Integração e comunicação (*integration and communication*)
 
 ---
 
@@ -685,7 +683,7 @@ Por que a idempotência é importante quando existem novas tentativas?
 
 ---
 
-# 6. 🧩 Padrões de projeto (*Design Patterns*)
+# 6. Padrões de projeto (*Design Patterns*)
 
 ---
 
@@ -795,7 +793,7 @@ Se um sistema utiliza Adaptador (*Adapter*), podemos concluir que:
 
 ---
 
-# 7. 🗺️ Síntese: da necessidade à decisão arquitetural
+# 7. Síntese: da necessidade à decisão arquitetural
 
 Este tópico é diferente dos anteriores: em vez de apresentar uma nova categoria, ele integra o raciocínio desenvolvido durante a aula.
 
@@ -942,41 +940,10 @@ flowchart TB
 > **Decisão:** O módulo de Compras exporá uma porta própria e cada fornecedor será implementado por um Adaptador.  
 > **Consequências:** Trocas e testes ficam mais simples, mas haverá mais interfaces e classes.
 
----
-
-## 7.6 Atividade integradora
-
-Em grupos, analisem a seguinte situação:
-
-> [!IMPORTANT]
-> **Situação:** a construtora iniciou obras em regiões com conexão móvel instável. Mestres de obras precisam registrar fotos, medições e avanços no canteiro. Quando a rede cai, informações são perdidas ou lançadas duas vezes após uma nova tentativa.
-
-Produzam:
-
-1. uma descrição objetiva do sintoma e das evidências que deveriam ser coletadas;
-2. o nível em que a causa provavelmente deve ser investigada primeiro;
-3. dois atributos de qualidade prioritários;
-4. um cenário mensurável para um desses atributos;
-5. um estilo arquitetural que poderia ser adotado;
-6. um padrão arquitetural que ajudaria em parte do problema;
-7. uma decisão de integração e comunicação;
-8. um padrão de projeto que poderia apoiar a implementação;
-9. um benefício e um custo da solução;
-10. um registro de decisão arquitetural resumido.
 
 ---
 
-## 7.7 Para levar
-
-> [!TIP]
-> - **Não existe arquitetura sem contexto.**
-> - **Toda decisão favorece algumas qualidades e cria algum custo.**
-> - **O nome de um estilo ou padrão não substitui a justificativa.**
-> - **A pergunta principal não é “qual tecnologia devemos usar?”, mas “qual necessidade precisamos atender e como verificaremos o resultado?”.**
-
----
-
-## 7.9 Percurso das próximas aulas
+## 7.6 Percurso das próximas aulas
 
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"primaryColor": "#dfe9e1", "primaryTextColor": "#26352b", "primaryBorderColor": "#4a7c59", "lineColor": "#4a7c59", "secondaryColor": "#fce8b8", "tertiaryColor": "#f2d8cf", "fontFamily": "DejaVu Sans"}}}%%
@@ -989,10 +956,9 @@ flowchart LR
     A6 --> A7["7<br/>Eventos e consistência"]
     A7 --> A8["8<br/>CQRS e projeto final"]
 ```
-
 ---
 
-# 📚 Referências básicas
+# Referências básicas
 
 - BASS, L.; CLEMENTS, P.; KAZMAN, R. *Software Architecture in Practice*. 4. ed. Addison-Wesley, 2021.
 - BUSCHMANN, F. et al. *Pattern-Oriented Software Architecture, Volume 1*. Wiley, 1996.
@@ -1008,3 +974,4 @@ flowchart LR
 - NYGARD, M. T. *Release It!*. 2. ed. Pragmatic Bookshelf, 2018.
 - PERRY, D. E.; WOLF, A. L. Foundations for the Study of Software Architecture. *ACM SIGSOFT Software Engineering Notes*, v. 17, n. 4, 1992.
 - RICHARDS, M.; FORD, N. *Fundamentals of Software Architecture*. 2. ed. O’Reilly, 2025.
+
