@@ -2,7 +2,7 @@
   <img src="./aula-05-botanical-banner.svg" alt="Panorama da Arquitetura de Software — tema Botanical Garden" width="100%">
 </p>
 
-# 🏗️ Aula 5 – Panorama da Arquitetura de Software
+# Aula 1 – Panorama da Arquitetura de Software
 
 **Técnicas Avançadas de Programação**  
 **Bloco:** Arquitetura de Software  
@@ -23,22 +23,6 @@ Ao final da aula, o estudante deverá ser capaz de:
 
 ---
 
-## Roteiro
-
-| Tempo | Tópico |
-|---:|---|
-| 10 min | Apresentação do problema e do mapa da aula |
-| 25 min | 1. Arquitetura de software (*software architecture*) |
-| 30 min | 2. Atributos de qualidade (*quality attributes*) |
-| 30 min | 3. Estilos arquiteturais (*architectural styles*) |
-| 10 min | Intervalo |
-| 25 min | 4. Padrões arquiteturais (*architectural patterns*) |
-| 35 min | 5. Integração e comunicação (*integration and communication*) |
-| 25 min | 6. Padrões de projeto (*Design Patterns*) |
-| 50 min | 7. Síntese: da necessidade à decisão arquitetural |
-
----
-
 ## Caso condutor: Obra360
 
 A Obra360 é uma plataforma utilizada por uma construtora para administrar suas obras:
@@ -53,7 +37,7 @@ A Obra360 é uma plataforma utilizada por uma construtora para administrar suas 
 Durante a aula, usaremos esse caso para responder:
 
 > [!TIP]
-> **Pergunta condutora:** que decisões estruturais ajudam a Obra360 a atender suas necessidades, e quais custos acompanham essas decisões?
+>> **Pergunta condutora:** que decisões estruturais ajudam a Obra360 a atender suas necessidades, e quais custos acompanham essas decisões?
 
 ---
 
@@ -95,7 +79,7 @@ flowchart TB
 
 ---
 
-# 1. 🧭 Arquitetura de software (*software architecture*)
+# 1.  Arquitetura de software (*software architecture*)
 
 ---
 
@@ -114,7 +98,7 @@ As definições enfatizam aspectos complementares: **estrutura**, **importância
 ## 1.2 Definição adotada
 
 > [!IMPORTANT]
-> **Definição adotada:** arquitetura de software (*software architecture*) é o conjunto das decisões estruturais importantes de um sistema, das relações entre suas partes e das razões que justificam essas decisões.
+>> **Definição adotada:** arquitetura de software (*software architecture*) é o conjunto das decisões estruturais importantes de um sistema, das relações entre suas partes e das razões que justificam essas decisões.
 
 Uma decisão tende a ser arquitetural quando:
 
@@ -224,7 +208,7 @@ Qual item representa uma relação arquitetural?
 ## 2.2 Definição adotada
 
 > [!IMPORTANT]
-> **Definição adotada:** atributo de qualidade (*quality attribute*) descreve quão bem o sistema deve realizar suas funções e sob quais condições esse comportamento deve ocorrer.
+>>  **Definição adotada:** atributo de qualidade (*quality attribute*) descreve quão bem o sistema deve realizar suas funções e sob quais condições esse comportamento deve ocorrer.
 
 Compare:
 
@@ -342,7 +326,7 @@ Qual atributo está mais diretamente relacionado ao esforço necessário para tr
 ## 3.2 Definição adotada
 
 > [!IMPORTANT]
-> **Definição adotada:** estilo arquitetural (*architectural style*) é uma forma geral de organizar o sistema, definindo tipos de partes, maneiras de interação e restrições estruturais.
+>>  **Definição adotada:** estilo arquitetural (*architectural style*) é uma forma geral de organizar o sistema, definindo tipos de partes, maneiras de interação e restrições estruturais.
 
 Um estilo:
 
@@ -465,7 +449,7 @@ Os autores nem sempre usam “estilo” e “padrão” da mesma maneira. Nesta 
 ## 4.2 Definição adotada
 
 > [!IMPORTANT]
-> **Definição adotada:** padrão arquitetural (*architectural pattern*) é uma solução estrutural conhecida para um problema recorrente, aplicável em determinado contexto e acompanhada de consequências.
+>> **Definição adotada:** padrão arquitetural (*architectural pattern*) é uma solução estrutural conhecida para um problema recorrente, aplicável em determinado contexto e acompanhada de consequências.
 
 Para este bloco:
 
@@ -578,7 +562,7 @@ Por que as consequências fazem parte da descrição de um padrão?
 ## 5.2 Definição adotada
 
 > [!IMPORTANT]
-> **Definição adotada:** integração e comunicação (*integration and communication*) compreendem os mecanismos e contratos usados pelas partes do sistema para trocar dados, solicitar ações, informar fatos e lidar com falhas.
+>>  **Definição adotada:** integração e comunicação (*integration and communication*) compreendem os mecanismos e contratos usados pelas partes do sistema para trocar dados, solicitar ações, informar fatos e lidar com falhas.
 
 Quando uma interação passa pela rede, aparecem novos problemas:
 
@@ -822,7 +806,7 @@ Este tópico é diferente dos anteriores: em vez de apresentar uma nova categori
 No início da aula, adotamos:
 
 > [!IMPORTANT]
-> **Arquitetura de software (*software architecture*) é o conjunto das decisões estruturais importantes de um sistema, das relações entre suas partes e das razões que justificam essas decisões.**
+>>  **Arquitetura de software (*software architecture*) é o conjunto das decisões estruturais importantes de um sistema, das relações entre suas partes e das razões que justificam essas decisões.**
 
 Agora podemos completar o raciocínio:
 
@@ -938,21 +922,7 @@ flowchart TB
 
 ---
 
-## 7.5 Aplicação ao caso Obra360
-
-| Elemento | Justificativa | Custo ou risco | Exemplo geral em engenharia de software |
-|---|---|---|---|
-| Atributo de qualidade | Priorizar a qualidade mais relevante ao contexto | Outras qualidades podem receber menor prioridade | Priorizar desempenho em um sistema de consultas |
-| Estilo arquitetural | Organizar o sistema de acordo com equipe, implantação e escala | A estrutura escolhida impõe restrições | Adotar monólito modular para uma equipe pequena |
-| Padrão arquitetural | Resolver um problema estrutural específico | Acrescenta elementos e indireção | Usar Arquitetura Hexagonal para isolar um provedor externo |
-| Integração | Permitir colaboração entre partes com garantias adequadas | Pode introduzir atraso, duplicação ou falhas parciais | Processar notificações de forma assíncrona e idempotente |
-| Padrão de projeto | Organizar uma solução local entre classes | Aumenta o número de classes e interfaces | Implementar um Adaptador para cada provedor |
-
-Essa é uma solução possível, não a única solução correta.
-
----
-
-## 7.6 Registro de decisão arquitetural (*Architecture Decision Record – ADR*)
+## 7.5 Registro de decisão arquitetural (*Architecture Decision Record – ADR*)
 
 | Seção | Conteúdo |
 |---|---|
@@ -974,7 +944,7 @@ Essa é uma solução possível, não a única solução correta.
 
 ---
 
-## 7.7 Atividade integradora
+## 7.6 Atividade integradora
 
 Em grupos, analisem a seguinte situação:
 
@@ -996,17 +966,7 @@ Produzam:
 
 ---
 
-## 7.8 Perguntas para discussão
-
-Diferentemente dos questionários anteriores, estas perguntas admitem mais de uma solução, desde que exista justificativa:
-
-1. Qual atributo de qualidade deve ter prioridade para a Obra360? Por quê?
-2. Um monólito modular seria suficiente ou microsserviços seriam necessários?
-3. Que evidência permitiria verificar se a arquitetura escolhida atendeu à necessidade?
-
----
-
-## 7.9 Para levar
+## 7.7 Para levar
 
 > [!TIP]
 > - **Não existe arquitetura sem contexto.**
@@ -1016,7 +976,7 @@ Diferentemente dos questionários anteriores, estas perguntas admitem mais de um
 
 ---
 
-## 7.10 Percurso das próximas aulas
+## 7.9 Percurso das próximas aulas
 
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"primaryColor": "#dfe9e1", "primaryTextColor": "#26352b", "primaryBorderColor": "#4a7c59", "lineColor": "#4a7c59", "secondaryColor": "#fce8b8", "tertiaryColor": "#f2d8cf", "fontFamily": "DejaVu Sans"}}}%%
