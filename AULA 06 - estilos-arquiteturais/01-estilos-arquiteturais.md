@@ -3,11 +3,6 @@
 **Disciplina:** Arquitetura de Software
 **Livro-Texto Base:** *Fundamentals of Software Architecture: An Engineering Approach* (Mark Richards & Neal Ford)
 **Objetivo Didático:** Capacitar os alunos a compreender a topologia, as características operacionais, as formas de particionamento e os *trade-offs* de cada estilo arquitetural do livro, com exemplos práticos e concretos.
-
-> **Sugestão de divisão:** o conteúdo rende duas aulas.
-> **Aula 1:** Fundamentos (Seção 1) + Monólitos (Seção 2).
-> **Aula 2:** Distribuídos (Seção 3) + Matriz Comparativa (Seção 4) + Estudos de Caso e Exercícios (arquivo separado).
-
 ---
 
 ## Sumário
