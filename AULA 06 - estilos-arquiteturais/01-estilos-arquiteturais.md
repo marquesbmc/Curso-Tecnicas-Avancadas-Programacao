@@ -1,8 +1,11 @@
 # Plano de Aula: Estilos Arquiteturais e Análise de Trade-Offs
 
 **Disciplina:** Arquitetura de Software
+
 **Livro-Texto Base:** *Fundamentals of Software Architecture: An Engineering Approach* (Mark Richards & Neal Ford)
+
 **Objetivo Didático:** Capacitar os alunos a compreender a topologia, as características operacionais, as formas de particionamento e os *trade-offs* de cada estilo arquitetural do livro, com exemplos práticos e concretos.
+
 ---
 
 ## Sumário
