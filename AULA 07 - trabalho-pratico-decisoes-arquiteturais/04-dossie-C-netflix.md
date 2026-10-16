@@ -78,7 +78,7 @@ A migração levou **cerca de sete anos**. Primeiro foram os sistemas voltados a
 
 ```mermaid
 graph TD
-    U["Clientes em mais de 130 países<br/>TV, celular, computador"] --> API
+    U["Clientes no mundo todo<br/>TV, celular, computador"] --> API
     subgraph AWS ["Nuvem AWS, em várias regiões"]
         API["Camada de API"] --> S1["Assinaturas"]
         API --> S2["Catálogo"]

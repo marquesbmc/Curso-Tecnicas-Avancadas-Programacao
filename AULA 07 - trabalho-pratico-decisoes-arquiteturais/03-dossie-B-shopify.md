@@ -53,7 +53,7 @@ O diagnóstico do time: todos os problemas vinham da **falta de fronteiras** ent
 
 ```mermaid
 graph TD
-    subgraph APP ["Uma aplicação Rails, uma implantação, organizada por tipo técnico"]
+    subgraph APP ["Uma aplicação Rails, uma implantação: os domínios existem, mas sem fronteiras"]
         CK["Checkout"] --> FR["Frete"]
         FR -->|"exemplo citado pelo time"| IM["Impostos"]
         CK --> PG["Pagamentos"]
@@ -184,7 +184,7 @@ timeline
 * Aplique o **teste do "e se cair?"** ao monólito. Agora aplique aos ***pods***: se o banco do *pod* 3 cair, o que acontece com as lojas do *pod* 7? O que isso diz sobre o número de quanta?
 * Compare os argumentos do time contra microsserviços com as **8 falácias da computação distribuída**. Quais delas o time citou, mesmo sem usar esse nome?
 * Monte a tabela **antes × depois** com as estrelas da matriz da Aula 06. O que a Shopify **ganhou** com a modularização e os *pods*, e que característica ela **aceitou sacrificar** ao manter tudo numa única implantação?
-* Releia a "armadilha comum" de Camadas e de Microsserviços na Aula 06. Qual delas a Shopify evitou, e qual quase viveu?
+* Releia as desvantagens do **particionamento técnico** (Seção 1.2 da Aula 06) e a armadilha **"Monólito Distribuído"** (Seção 3.5). Qual dos dois problemas a Shopify viveu, e qual ela evitou ao não migrar para microsserviços?
 
 ---
 
@@ -194,4 +194,4 @@ timeline
 * [Under Deconstruction: The State of Shopify's Monolith](https://shopify.engineering/shopify-monolith) – Philip Müller, Shopify Engineering, 2020
 * [A Pods Architecture To Allow Shopify To Scale](https://shopify.engineering/a-pods-architecture-to-allow-shopify-to-scale) – Shopify Engineering
 * [E-Commerce at Scale: Inside Shopify's Tech Stack](https://shopify.engineering/e-commerce-at-scale-inside-shopifys-tech-stack) – Shopify Engineering
-* [Podcast: Decomposing a massive Rails monolith with Kirsten Westeinde](https://sourcegraph.com/podcast/refactoring-shopify-codebase-kirsten-westeinde) – Sourcegraph
+* [Engineering Leadership and Refactoring Monoliths with Kirsten Westeinde](https://hanselminutes.com/862/engineering-leadership-and-refactoring-monoliths-with-kirsten-westeinde) – podcast Hanselminutes, outubro de 2022

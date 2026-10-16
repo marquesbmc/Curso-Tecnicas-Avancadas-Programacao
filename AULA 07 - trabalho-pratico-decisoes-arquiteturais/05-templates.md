@@ -17,7 +17,7 @@ Copie tudo o que está dentro do bloco abaixo para um arquivo `entrega-dupla-X.m
 # Trabalho Prático – Dupla [A/B/C]: [Nome da Empresa]
 
 **Integrantes:** [nome 1], [nome 2]
-**Cartão sorteado:** [ex.: C1 · "A Startup que Quer Ser a Netflix"]
+**Cartão sorteado:** [código e título do cartão, ex.: X1 · "Título do Cartão"]
 
 ---
 

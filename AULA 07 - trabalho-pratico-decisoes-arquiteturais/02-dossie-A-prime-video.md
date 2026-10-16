@@ -156,6 +156,7 @@ O artigo virou munição para os dois lados:
 ## Fontes
 
 * Artigo original do time do Prime Video (março de 2023), *Scaling up the Prime Video audio/video monitoring service and reducing costs by 90%*, por Marcin Kolny. O endereço original saiu do ar; versão arquivada: [web.archive.org](https://web.archive.org/web/20230504060528/https://www.primevideotech.com/video-streaming/scaling-up-the-prime-video-audio-video-monitoring-service-and-reducing-costs-by-90)
+* [Prime Video Switched from Serverless to EC2 and ECS to Save Costs](https://www.infoq.com/news/2023/05/prime-ec2-ecs-saves-costs/) – Rafał Gancarz, InfoQ, maio de 2023 (use esta se o link arquivado não abrir)
 * [Prime Video Sparks Serverless Debate by Switching to Monolith](https://virtualizationreview.com/articles/2023/05/08/serverless-vs-monolith.aspx) – Virtualization Review, maio de 2023
 * [Prime Video monolith architecture debate: Adrian Cockcroft's take](https://thestack.technology/prime-video-monolith-architecture-debate-bad-takes-adrian-cockcroft) – The Stack
 * [Amazon Cuts 90% Infra Cost by Going Monolith](https://simformnewsletter.substack.com/p/amazon-cuts-90-infra-cost-by-going) – resumo técnico com os diagramas do artigo original
