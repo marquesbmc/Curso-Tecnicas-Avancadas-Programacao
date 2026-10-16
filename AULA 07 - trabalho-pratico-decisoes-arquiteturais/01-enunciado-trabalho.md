@@ -45,7 +45,7 @@
 | **0:00 – 0:10** | Abertura | Dinâmica explicada e sorteio dos casos. |
 | **0:10 – 1:30** | **Parte 1: O *Trade-off* do Caso Real** (80 min) | Leitura do dossiê, análise do "como era" e do "o que fizeram", e a tabela de *trade-offs*. |
 | **1:30 – 1:45** | Checkpoint | O professor passa 5 minutos com cada dupla. |
-| **1:45 – 1:50** | **Sorteio do Cartão de Mudança** | Cada dupla escolhe o cartão "1" ou "2" do seu caso, sem ver, e recebe o cenário na tela ou no chat da turma. |
+| **1:45 – 1:50** | **Sorteio do Cartão de Mudança** | Cada dupla escolhe "1" ou "2" e recebe um dos dois [cartões](06-cartoes-de-mudanca.md) do seu caso. |
 | **1:50 – 2:50** | **Parte 2: A Decisão da Dupla** (60 min) | A dupla decide o que fazer e registra a decisão num ADR. |
 | **2:50 – 3:00** | Intervalo | |
 | **3:00 – 3:45** | **Apresentações com Revisor** (3 × 15 min) | 8 min de apresentação + 7 min de revisão. |
@@ -124,3 +124,4 @@ O papel do revisor **não é concordar**: é encontrar o *trade-off* que a dupla
 * [03-dossie-B-shopify.md](03-dossie-B-shopify.md)
 * [04-dossie-C-netflix.md](04-dossie-C-netflix.md)
 * [05-templates.md](05-templates.md) (template de entrega, template de ADR e ficha do revisor)
+* [06-cartoes-de-mudanca.md](06-cartoes-de-mudanca.md) (os cartões da Parte 2)

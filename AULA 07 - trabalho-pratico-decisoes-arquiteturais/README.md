@@ -13,3 +13,4 @@ Trabalho em duplas que aplica o conteúdo da [AULA 06 - Estilos Arquiteturais](.
 | [03-dossie-B-shopify.md](03-dossie-B-shopify.md) | Caso B: o monólito Rails que virou monólito modular, e os *pods* que resolvem a escala |
 | [04-dossie-C-netflix.md](04-dossie-C-netflix.md) | Caso C: a migração do data center para a nuvem e de monólito para microsserviços |
 | [05-templates.md](05-templates.md) | Template de entrega, template de ADR e ficha do revisor |
+| [06-cartoes-de-mudanca.md](06-cartoes-de-mudanca.md) | Os 6 cartões de mudança da Parte 2, dois por caso |
