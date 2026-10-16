@@ -31,7 +31,7 @@
   * **Caso A: Amazon Prime Video.** Um serviço distribuído que foi **juntado** num processo só.
   * **Caso B: Shopify.** Um monólito que foi **organizado** por domínio, sem ser quebrado em serviços.
   * **Caso C: Netflix.** Um monólito que foi **quebrado** em centenas de microsserviços na nuvem.
-* **Material base:** todo o material está **neste repositório**. Cada dupla abre o **dossiê** do seu caso, com o resumo técnico e os links para as fontes originais. O dossiê é suficiente para fazer o trabalho. Nada é impresso: tenha o dossiê, o [template](05-templates.md) e a matriz de estrelas da Aula 06 abertos no computador.
+* **Material base:** todo o material está **neste repositório**. Cada dupla abre o **dossiê** do seu caso, com o resumo técnico e os links para as fontes originais. O dossiê é suficiente para fazer o trabalho. Nada é impresso: tenha o dossiê, o [template](05-templates.md) e a [matriz de estrelas da Aula 06](../AULA%2006%20-%20estilos-arquiteturais/01-estilos-arquiteturais.md#4-matriz-comparativa-star-ratings) abertos no computador.
 * **Pesquisa extra:** é permitida e valorizada, desde que **toda afirmação sobre a empresa tenha fonte** (link para blog de engenharia, palestra ou artigo). Não invente a arquitetura da empresa.
 * **Pergunte ao CTO:** durante a Parte 2, cada dupla pode fazer **até 2 perguntas** ao professor, que faz o papel de CTO da empresa (ex.: "qual é o orçamento?", "qual é o prazo?"). Use as perguntas com sabedoria: um arquiteto levanta requisitos com o negócio, em vez de supor.
 * **Entrega:** um arquivo `.md` por dupla, chamado `entrega-dupla-X.md` e seguindo o [template de entrega](05-templates.md), enviado ao professor **até o fim da aula** pelo canal combinado (ex.: AVA, e-mail ou *pull request* no repositório).
@@ -61,7 +61,7 @@ A dupla deve produzir:
 
 1. **Contexto de negócio:** em 3 a 5 linhas, qual problema a empresa precisava resolver e quais eram as restrições (time, prazo, custo, escala).
 2. **Como era × o que fizeram:** o dossiê traz diagramas em Mermaid das duas arquiteturas. **Copie-os para a entrega e complete com a análise de vocês**: indique o estilo da Aula 06 que melhor descreve cada uma.
-3. **Análise de quanta:** aplique o **teste do "e se cair?"** (Seção 1.3) **antes** e **depois**, e **marque os quanta nos diagramas** usando `subgraph`, como na Seção 1.3 da Aula 06. O número de quanta mudou? Por quê?
+3. **Análise de quanta:** aplique o **teste do "e se cair?"** ([Seção 1.3 da Aula 06](../AULA%2006%20-%20estilos-arquiteturais/01-estilos-arquiteturais.md#13-o-conceito-de-architectural-quantum)) **antes** e **depois**, e **marque os quanta nos diagramas** usando `subgraph`, como nos exemplos A e B dessa seção. O número de quanta mudou? Por quê?
 4. **A tabela de *trade-offs* (o coração do trabalho):** compare as duas arquiteturas, característica por característica, usando estrelas como na matriz da Aula 06 (Seção 4). Marque o que **melhorou**, o que **piorou** e o que ficou igual.
 5. **O veredito:** em poucas linhas, responda:
    * Qual foi o principal **ganho**?
