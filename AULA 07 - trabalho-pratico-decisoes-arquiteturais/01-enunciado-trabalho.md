@@ -60,8 +60,8 @@
 A dupla deve produzir:
 
 1. **Contexto de negócio:** em 3 a 5 linhas, qual problema a empresa precisava resolver e quais eram as restrições (time, prazo, custo, escala).
-2. **Como era × o que fizeram:** um diagrama em Mermaid de **cada** arquitetura, no mesmo padrão da Aula 06, com o estilo da Aula 06 que melhor descreve cada uma.
-3. **Análise de quanta:** aplique o **teste do "e se cair?"** (Seção 1.3) **antes** e **depois**. O número de quanta mudou? Por quê?
+2. **Como era × o que fizeram:** o dossiê traz diagramas em Mermaid das duas arquiteturas. **Copie-os para a entrega e complete com a análise de vocês**: indique o estilo da Aula 06 que melhor descreve cada uma.
+3. **Análise de quanta:** aplique o **teste do "e se cair?"** (Seção 1.3) **antes** e **depois**, e **marque os quanta nos diagramas** usando `subgraph`, como na Seção 1.3 da Aula 06. O número de quanta mudou? Por quê?
 4. **A tabela de *trade-offs* (o coração do trabalho):** compare as duas arquiteturas, característica por característica, usando estrelas como na matriz da Aula 06 (Seção 4). Marque o que **melhorou**, o que **piorou** e o que ficou igual.
 5. **O veredito:** em poucas linhas, responda:
    * Qual foi o principal **ganho**?

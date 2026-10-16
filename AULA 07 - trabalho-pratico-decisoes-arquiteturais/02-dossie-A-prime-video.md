@@ -6,6 +6,8 @@
 
 > ⚠️ **Atenção:** este caso trata de **um serviço específico** dentro do Prime Video, não da plataforma inteira. Guarde essa informação: ela é importante para a análise.
 
+> 📊 **Sobre os diagramas deste dossiê:** são simplificados e servem para **visualizar a estrutura** (o que existe e como as partes se ligam). Eles **não mostram a análise**: os quanta, o estilo da Aula 06 e o *trade-off* são com vocês.
+
 ---
 
 ## 1. O Contexto de Negócio
@@ -38,6 +40,26 @@ O time construiu a primeira versão como um **sistema distribuído usando compon
 * Cada detector lia esses quadros do S3 para fazer a análise.
 * A cada passo do fluxo, a máquina de estados do Step Functions registrava uma **transição de estado**.
 
+**O fluxo de uma transmissão, antes:**
+
+```mermaid
+graph LR
+    TV["Transmissão ao vivo"] --> SF{{"Orquestração<br/>AWS Step Functions"}}
+    SF -->|"aciona"| CM["Conversor de mídia<br/>(serverless)"]
+    CM -->|"grava cada quadro"| S3[("Bucket S3<br/>quadros de vídeo")]
+    SF -->|"aciona"| D1["Detector:<br/>imagem congelada"]
+    SF -->|"aciona"| D2["Detector:<br/>blocos corrompidos"]
+    SF -->|"aciona"| D3["Detector:<br/>áudio fora de sincronia"]
+    S3 -->|"lê cada quadro"| D1
+    S3 -->|"lê cada quadro"| D2
+    S3 -->|"lê cada quadro"| D3
+    D1 --> N["Notificação<br/>de defeito"]
+    D2 --> N
+    D3 --> N
+```
+
+> Cada seta que passa pela orquestração é uma **transição de estado cobrada**, e acontecem várias por segundo, em cada transmissão. Cada quadro de vídeo faz **duas viagens pela rede**: uma para gravar no S3 e outra para cada detector ler.
+
 ---
 
 ## 3. O Problema
@@ -68,6 +90,25 @@ O time **juntou todos os componentes num único processo**:
 * Uma **camada leve de orquestração** distribui as requisições de monitoramento entre as cópias.
 * Uma decisão contraintuitiva: o processo de conversão de mídia, que é caro, passou a ser **replicado e colocado junto dos detectores** em cada cópia. Converter uma única vez e reaproveitar o resultado parecia mais barato, mas o time verificou que não era.
 
+**O fluxo, depois:**
+
+```mermaid
+graph LR
+    TV["Transmissões ao vivo"] --> OL["Camada leve de orquestração<br/>distribui as transmissões"]
+    OL --> CM1
+    OL --> CM2
+    subgraph C1 ["Cópia 1: um processo no ECS"]
+        CM1["Conversor de mídia"] -->|"quadros em memória"| DA["Detectores do<br/>subconjunto A"]
+    end
+    subgraph C2 ["Cópia 2: um processo no ECS"]
+        CM2["Conversor de mídia"] -->|"quadros em memória"| DB["Detectores do<br/>subconjunto B"]
+    end
+    DA --> N["Notificação<br/>de defeito"]
+    DB --> N
+```
+
+> O conversor aparece **duas vezes** de propósito: ele é replicado em cada cópia. Os quadros não saem mais do processo, e não existe mais o *bucket* no meio do caminho.
+
 ---
 
 ## 5. Os Resultados Relatados
@@ -75,6 +116,18 @@ O time **juntou todos os componentes num único processo**:
 * Redução de **mais de 90% no custo de infraestrutura**.
 * Aumento da capacidade de escala: o serviço passou a monitorar **milhares de transmissões**, ainda com folga para crescer.
 * A mudança para EC2 permitiu usar **planos de desconto de computação** da AWS, reduzindo ainda mais o custo.
+
+**Linha do tempo do caso:**
+
+```mermaid
+timeline
+    title Prime Video: monitoramento de qualidade
+    Primeira versão : Construída rápido com serverless : Step Functions + Lambda + S3
+    Ao escalar : Limite rígido a cerca de 5% da carga esperada : Custo alto por transição e por quadro
+    Reconstrução : Tudo num processo, no ECS : Cópias com subconjuntos de detectores
+    Março de 2023 : Artigo publicado : Custo de infraestrutura mais de 90% menor
+    Maio de 2023 : Debate na indústria
+```
 
 ---
 

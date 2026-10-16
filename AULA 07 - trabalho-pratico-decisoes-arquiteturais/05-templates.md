@@ -29,7 +29,11 @@ Copie tudo o que está dentro do bloco abaixo para um arquivo `entrega-dupla-X.m
 ### 1.2 Como Era
 ```mermaid
 graph TD
-    %% arquitetura ANTES da mudança
+    %% cole aqui o diagrama "antes" do dossiê
+    %% e marque os quanta com subgraph, ex.:
+    %% subgraph Q1 ["Quantum 1"]
+    %%     A --> B
+    %% end
 ```
 * **Estilo (Aula 06):**
 * **Particionamento:** técnico / domínio
@@ -37,7 +41,8 @@ graph TD
 ### 1.3 O Que Fizeram
 ```mermaid
 graph TD
-    %% arquitetura DEPOIS da mudança
+    %% cole aqui o diagrama "depois" do dossiê
+    %% e marque os quanta com subgraph
 ```
 * **Estilo (Aula 06):**
 * **Particionamento:** técnico / domínio

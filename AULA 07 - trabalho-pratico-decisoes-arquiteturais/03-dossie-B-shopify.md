@@ -4,6 +4,8 @@
 
 **Período do caso:** os problemas ficaram evidentes em 2016; a reorganização começou em 2017 e foi documentada pelo time de engenharia a partir de 2019.
 
+> 📊 **Sobre os diagramas deste dossiê:** são simplificados e servem para **visualizar a estrutura** (o que existe e como as partes se ligam). Os nomes de domínio e as setas são ilustrativos, exceto onde o texto cita o exemplo do time. Eles **não mostram a análise**: os quanta, o estilo da Aula 06 e o *trade-off* são com vocês.
+
 ---
 
 ## 1. O Contexto de Negócio
@@ -47,6 +49,29 @@ Com o crescimento do código e do time, surgiram sinais de alerta:
 
 O diagnóstico do time: todos os problemas vinham da **falta de fronteiras** entre funcionalidades distintas.
 
+**Como era o código, por dentro:**
+
+```mermaid
+graph TD
+    subgraph APP ["Uma aplicação Rails, uma implantação, organizada por tipo técnico"]
+        CK["Checkout"] --> FR["Frete"]
+        FR -->|"exemplo citado pelo time"| IM["Impostos"]
+        CK --> PG["Pagamentos"]
+        PG --> PE["Pedidos"]
+        PE --> FR
+        IM --> PE
+        CO["Cobrança do lojista"] --> PE
+        CK --> PR["Produtos"]
+        PR --> IM
+        CO --> PG
+    end
+    CK --> DB[("Banco de dados<br/>compartilhado")]
+    PE --> DB
+    CO --> DB
+```
+
+> Qualquer parte do código pode chamar qualquer outra, e não existe regra para as setas. Mudar **Impostos** pode quebrar **Frete** sem que ninguém perceba o porquê.
+
 ---
 
 ## 4. A Decisão: Microsserviços? Não.
@@ -73,6 +98,26 @@ O time avaliou microsserviços, que estavam em alta. A conclusão foi que eles *
 
 **Resultado concreto citado:** o motor de cálculo de impostos, antigo e inadequado, foi **substituído por um sistema completamente novo**, algo que antes era considerado quase impossível.
 
+**Como ficou o código, por dentro:**
+
+```mermaid
+graph TD
+    subgraph APP ["Monólito modular: ainda uma aplicação, uma implantação"]
+        CK["Checkout<br/>API pública + dados próprios"]
+        FR["Frete<br/>API pública + dados próprios"]
+        IM["Impostos<br/>API pública + dados próprios"]
+        PG["Pagamentos<br/>API pública + dados próprios"]
+        PE["Pedidos<br/>API pública + dados próprios"]
+        CK -->|"só pela API"| FR
+        CK -->|"só pela API"| PG
+        FR -->|"só pela API"| IM
+        PG -->|"só pela API"| PE
+    end
+    W["Wedge / Packwerk<br/>apontam chamadas que furam a fronteira"] -.->|"fiscaliza"| CK
+```
+
+> As caixas continuam na mesma aplicação, mas agora cada uma tem uma **porta de entrada** (a API pública) e é dona dos seus dados. É por isso que trocar o motor de **Impostos** inteiro se tornou possível.
+
 ---
 
 ## 6. E a Escala? Os *Pods*
@@ -84,6 +129,41 @@ A modularização resolve o problema do **código**, mas não o da **carga**. Pa
 * Servidores de aplicação e *workers* são compartilhados, mas **cada requisição só fala com um único *pod***. Nada atravessa *pods*.
 * Uma ferramenta move um *pod* inteiro para outro data center em cerca de um minuto, sem perder requisições.
 * Com mais de cem *pods*, o time relatou que, desde a adoção dessa arquitetura, não houve uma grande queda que afetasse a Shopify inteira.
+
+**Como funcionam os *pods*:**
+
+```mermaid
+graph TD
+    REQ["Requisições de todas as lojas"] --> RT["Roteamento:<br/>descobre o pod da loja"]
+    RT --> APPS["Servidores de aplicação e workers<br/>compartilhados, com o mesmo código"]
+    APPS -->|"lojas do pod 1"| DB1
+    APPS -->|"lojas do pod 2"| DB2
+    APPS -->|"lojas do pod N"| DBN
+    subgraph P1 ["Pod 1"]
+        DB1[("Bancos de dados<br/>do pod 1")]
+    end
+    subgraph P2 ["Pod 2"]
+        DB2[("Bancos de dados<br/>do pod 2")]
+    end
+    subgraph PN ["Pod N"]
+        DBN[("Bancos de dados<br/>do pod N")]
+    end
+```
+
+> Cada requisição fala com **um único *pod***. Nenhuma seta liga um *pod* a outro.
+
+**Linha do tempo do caso:**
+
+```mermaid
+timeline
+    title Shopify: o monólito ao longo do tempo
+    Por volta de 2006 : Início do monólito Rails
+    2015 : O banco não cabe mais num servidor : Particionamento (sharding)
+    2016 : Arquitetura de pods : Código frágil, testes lentos, curva de aprendizado enorme
+    2017 : Início do projeto Componentization : 6.000 classes reclassificadas por domínio
+    2019 : Publicação de Deconstructing the Monolith
+    2020 : 2,8 milhões de linhas e 500 mil commits
+```
 
 ---
 

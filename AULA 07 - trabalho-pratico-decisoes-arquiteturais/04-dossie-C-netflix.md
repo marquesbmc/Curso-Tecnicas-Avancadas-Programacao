@@ -4,6 +4,8 @@
 
 **Período do caso:** de 2008, quando uma falha grave motivou a mudança, até janeiro de 2016, quando a migração foi concluída. A empresa documentou a jornada no próprio site e em palestras técnicas.
 
+> 📊 **Sobre os diagramas deste dossiê:** são simplificados e servem para **visualizar a estrutura** (o que existe e como as partes se ligam). Os nomes dos serviços são exemplos: a Netflix tem centenas. Eles **não mostram a análise**: os quanta, o estilo da Aula 06 e o *trade-off* são com vocês.
+
 ---
 
 ## 1. O Contexto de Negócio
@@ -21,6 +23,15 @@ O sistema precisava controlar assinaturas, cobrança, a fila de filmes de cada c
 * **Data centers próprios:** a Netflix construiu seus data centers, o que era lento. Para atender mais carga, a empresa comprava **máquinas maiores** (escala vertical).
 * **Operação tradicional:** pedir novos servidores exigia aprovação de orçamento e semanas de espera pelo hardware; as versões novas eram lançadas de forma **centralizada e coordenada**.
 
+```mermaid
+graph TD
+    U["Clientes: site, fila de filmes,<br/>pedidos de DVD e streaming"] --> APP
+    subgraph DC ["Data center próprio"]
+        APP["Aplicação monolítica<br/>uma unidade implantável"] --> DB[("Banco de dados<br/>relacional central")]
+    end
+    ESC["Para crescer:<br/>comprar máquinas maiores"] -.-> DB
+```
+
 ---
 
 ## 3. O Problema (agosto de 2008)
@@ -28,6 +39,15 @@ O sistema precisava controlar assinaturas, cobrança, a fila de filmes de cada c
 Uma **corrupção grave no banco de dados** impediu a Netflix de enviar DVDs aos clientes por **três dias**.
 
 A conclusão da empresa foi que o problema não era só aquele banco: era a arquitetura inteira, baseada em **pontos únicos de falha que escalavam verticalmente**, como os bancos relacionais nos data centers. Além disso, o streaming prometia um crescimento que os data centers não acompanhariam.
+
+```mermaid
+graph TD
+    U["Clientes"] --> APP["Aplicação monolítica"]
+    APP --> DB[("Banco central<br/>CORROMPIDO")]
+    DB -.->|"falha"| E1["Envio de DVDs parado<br/>por três dias"]
+    style DB fill:#f8d7da,stroke:#c0392b,color:#000
+    style E1 fill:#f8d7da,stroke:#c0392b,color:#000
+```
 
 ---
 
@@ -56,6 +76,38 @@ A migração levou **cerca de sete anos**. Primeiro foram os sistemas voltados a
 * A disponibilidade melhorou de forma constante e se aproximou da meta de **99,99%**.
 * **Custo:** economizar não era o objetivo principal, mas o custo de nuvem por início de reprodução acabou sendo uma **fração** do custo no data center.
 
+```mermaid
+graph TD
+    U["Clientes em mais de 130 países<br/>TV, celular, computador"] --> API
+    subgraph AWS ["Nuvem AWS, em várias regiões"]
+        API["Camada de API"] --> S1["Assinaturas"]
+        API --> S2["Catálogo"]
+        API --> S3["Recomendações"]
+        API --> S4["Reprodução"]
+        API --> S5["Cobrança"]
+        S1 --> D1[("Dados de<br/>Assinaturas")]
+        S2 --> D2[("Dados do<br/>Catálogo")]
+        S3 --> D3[("Dados de<br/>Recomendações")]
+        S4 --> D4[("Dados de<br/>Reprodução")]
+        S5 --> D5[("Dados de<br/>Cobrança")]
+    end
+```
+
+> Cada serviço tem **os seus próprios dados**, desnormalizados em bancos NoSQL. Não existe mais um banco central que todos compartilham. Os serviços **rodam em muitas máquinas comuns** e podem ganhar mais máquinas em minutos.
+
+**Linha do tempo do caso:**
+
+```mermaid
+timeline
+    title Netflix: do DVD à nuvem
+    1997 : Aluguel de DVDs pelo correio
+    2007 : Lançamento do streaming
+    Agosto de 2008 : Banco corrompido, três dias sem enviar DVDs : Decisão de ir para a AWS e reconstruir
+    Antes de 2015 : Sistemas voltados ao cliente já na nuvem
+    2015 : Migração de cobrança e dados de clientes e funcionários
+    Janeiro de 2016 : Último data center do streaming desligado : Mais de 130 novos países
+```
+
 ---
 
 ## 6. O Preço da Mudança
@@ -71,6 +123,17 @@ A própria empresa descreveu a migração como **muito trabalhosa**:
 * **Máquinas que somem a qualquer momento.** Na nuvem, um servidor pode falhar sem aviso. A resposta da Netflix foi criar o **Chaos Monkey**, uma ferramenta que **desliga servidores aleatoriamente em produção**, de propósito. A lógica: se o sistema não é testado contra falhas o tempo todo, ele não vai aguentar uma falha real.
 * **Degradação graciosa.** Os serviços foram desenhados para **sempre responder**, mesmo sem entregar a experiência completa. Exemplo dado pela empresa: se o serviço de recomendações cair, a tela mostra **títulos populares** no lugar.
 * **Falhas em cascata.** Com centenas de serviços chamando uns aos outros, um serviço lento pode travar todos os que dependem dele. A Netflix criou e publicou como código aberto o **Hystrix**, uma biblioteca que isola as chamadas entre serviços, interrompe chamadas a um serviço com problema (*circuit breaker*) e aciona uma resposta alternativa (*fallback*). Hoje o Hystrix está em modo de manutenção, e a Netflix passou a usar abordagens que se adaptam ao desempenho em tempo real.
+
+**Degradação graciosa, na prática:**
+
+```mermaid
+graph LR
+    T["Tela inicial pede<br/>recomendações"] --> Q{"Recomendações<br/>responderam a tempo?"}
+    Q -->|"sim"| R["Mostra recomendações<br/>personalizadas"]
+    Q -->|"não: o circuit breaker<br/>interrompe a chamada"| F["Fallback: mostra<br/>títulos populares"]
+```
+
+> O cliente **nunca vê uma tela de erro**: no pior caso, vê uma tela menos personalizada.
 
 ---
 
